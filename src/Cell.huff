@@ -1,0 +1,17 @@
+#define macro MAIN() = takes (0) returns (0) {
+    LOAD_BYTECODE()
+    DEPLOY()
+    DEPLOY()
+    0x00 selfdestruct
+}
+
+#define macro LOAD_BYTECODE() = takes (0) returns (0) {
+    __RIGHTPAD(0x603f8060093d393df3)    // minimal constructor
+    0x00 mstore                         // store constructor at beginning of memory
+    codesize 0x00 0x09 codecopy         // copy runtime code next to constructor
+}
+
+#define macro DEPLOY() = takes (0) returns (1) {
+    codesize 0x09 add                   // add 9 (the size of the costructor) to the runtime code size
+    0x00 0x00 create                    // deploy contract with constructor
+}

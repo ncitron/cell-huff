@@ -1,0 +1,19 @@
+#define macro MAIN() = takes (0) returns (0) {
+    0x601d8060093d393df3 returndatasize mstore
+    codesize returndatasize 0x20 codecopy
+
+    0x26
+    0x17
+    returndatasize
+
+    dup3
+    dup3
+    dup3
+
+    create
+    pop
+    create
+
+    selfdestruct
+}
+
